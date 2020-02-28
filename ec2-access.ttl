@@ -1,0 +1,21 @@
+;;==============================================
+;; Filename    : ec2-access.ttl
+;; Description : EC2接続マクロ
+;; Author      : Kohei Izumi
+;; Created     : 2019/01/02
+;;==============================================
+;; 環境設定
+HOSTADDR = 'ec2-<ここにIPアドレスが入る>.ap-northeast-1.compute.amazonaws.com'
+USERNAME = 'ec2-user'
+KEY_FILE = 'C:\<鍵の名前>.ppk'
+
+;============================================
+; ログイン
+;============================================
+COMMAND = HOSTADDR
+strconcat COMMAND ':22 /ssh /auth=publickey'
+strconcat COMMAND ' /user='
+strconcat COMMAND USERNAME
+strconcat COMMAND ' /keyfile='
+strconcat COMMAND KEY_FILE
+connect COMMAND
